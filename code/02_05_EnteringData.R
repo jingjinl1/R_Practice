@@ -27,6 +27,7 @@ x                   # Print contents of x in Console
 0:10     # 0 through 10
 10:0     # 10 through 0
 seq(10)  # 1 to 10
+seq(0,10) # same effect with 0:10
 seq(30, 0, by = -3)  # Count down by 3
 
 # MATH ################################################
