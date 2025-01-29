@@ -1,4 +1,4 @@
-#Notes - Day1
+#Notes - 2.Getting started
 #Created: 28/01/2025
 #Created by: JJ
 
@@ -60,4 +60,14 @@ a1 #Output: , , 1
     #       [3,]   15   19   23
     #       [4,]   16   20   24
 
+#Data frame
+vNumeric   <- c(1, 2, 3)
+vCharacter <- c("a", "b", "c")
+vLogical   <- c(T, F, T)
+
+df1 <- cbind(vNumeric, vCharacter, vLogical)
+df1  # after combine, all values are Characters
+
+df2 <- as.data.frame(cbind(vNumeric, vCharacter, vLogical))
+df2  # kept their original data types
 
