@@ -131,3 +131,5 @@ df <- import("data/StateData.xlsx") |> as_tibble() |>
   mutate(psychRegions = as.factor(psychRegions)) |> 
   rename(y = psychRegions) |>
   print()
+
+
