@@ -14,10 +14,10 @@ pacman::p_load(pacman, tidyverse, jsonlite)
 # GET JSON DATA ############################################
 
 # Data from http://ergast.com/mrd/
-# File: http://ergast.com/api/f1/1954/results/1.json
+# File: https://api.jolpi.ca/ergast/f1/1954/results/1.json
 # Page shows raw, unstructured JSON data
 
-dat <- "http://ergast.com/api/f1/1954/results/1.json" %>%
+dat <- "https://api.jolpi.ca/ergast/f1/1954/results/1.json" %>%
   fromJSON()  %>%  # Put data into list
   print()          # See raw data
 

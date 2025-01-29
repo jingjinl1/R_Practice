@@ -14,11 +14,11 @@ pacman::p_load(pacman, tidyverse, XML2R)
 # GET DATA & RESTRUCTURE ###################################
 
 # Data from http://ergast.com/mrd/
-# File: http://ergast.com/api/f1/1954/results/1.xml
+# File: https://api.jolpi.ca/ergast/f1/1954/results/1.xml
 # Right click to "View page source" and see raw XML
 
 # Import XML data from web (must be online)
-df <- "http://ergast.com/api/f1/1954/results/1.xml" %>%
+df <- "https://api.jolpi.ca/ergast/f1/1954/results/1.xml" %>%
   XML2Obs() %>%
   collapse_obs() %>%
   print()

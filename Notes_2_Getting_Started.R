@@ -3,6 +3,9 @@
 #Created by: JJ
 
 #Basic commands#############################################
+#Clear Environment
+rm(list = ls())
+
 # Clear packages
 detach("package:datasets", unload = TRUE)  # For base
 
