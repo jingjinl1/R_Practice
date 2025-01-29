@@ -40,9 +40,6 @@ Check out Code folder contains a file for each video with specific instructions 
 
 - [Complete Guide to R: Wrangling, Visualizing, and Modeling Data](https://www.linkedin.com/learning-login/share?account=2223545\&forceAccount=false\&redirect=https%3A%2F%2Fwww.linkedin.com%2Flearning%2Fcomplete-guide-to-r-wrangling-visualizing-and-modeling-data%3Ftrk%3Dshare_ent_url%26shareId%3DsSGcaJqfRii9Tr9GcHHkcg%253D%253D)
 
-## 🛠 Contributing
-
-Contributions are welcome! If you find any issues or want to improve the scripts, feel free to fork this repository and submit a pull request.
 
 ---
 
