@@ -13,12 +13,16 @@ pacman::p_load(pacman, tidyverse, XML2R)
 
 # GET DATA & RESTRUCTURE ###################################
 
-# Data from http://ergast.com/mrd/
-# File: https://api.jolpi.ca/ergast/f1/1954/results/1.xml
+# File: https://www.w3schools.com/xml/cd_catalog.xml
 # Right click to "View page source" and see raw XML
 
 # Import XML data from web (must be online)
-df <- "https://api.jolpi.ca/ergast/f1/1954/results/1.xml" %>%
+df <- "https://www.w3schools.com/xml/cd_catalog.xml" %>%
+  XML2Obs() %>%
+  collapse_obs() %>%
+  print()
+
+df <- "http://ergast.com/api/f1/1954/results/1.xml" %>%
   XML2Obs() %>%
   collapse_obs() %>%
   print()
@@ -29,25 +33,14 @@ df %>%
   print()
 
 # EXTRACT & COMBINE DATA ###################################
-
-# Extract data and save as tibble
-df %<>%  # %<>% is the compound assignment pipe operator
-  as_tibble() %>%                        # Save as tibble
-  select(                                # Select data
-    Race = matches("RaceName"),          # Get race name
-    FirstName = matches("GivenName"),    # Get first name
-    LastName = matches("FamilyName"),    # Get last name
-    Team = matches("Constructor//Name")  # Get team name
+#extract the XML_value from each named element before converting the list to a tibble
+df <- tibble(                             
+    Race = df$`MRData//RaceTable//Race//RaceName`[, "XML_value"], # Get race name
+    FirstName = df$`MRData//RaceTable//Race//ResultsList//Result//Driver//GivenName`, # Get first name
+    LastName = df$`MRData//RaceTable//Race//ResultsList//Result//Driver//FamilyName`[, "XML_value"], # Get last name
+    Team = df$`MRData//RaceTable//Race//ResultsList//Result//Constructor//Name`[, "XML_value"]  # Get team name
   ) %>% 
-  print()  # Each column is a list with two values (oops)
-
-# Alternative view doesn't show URLs
-df %>% view()
-
-# Rewrite columns to keep just the "XML_value"
-df %<>%  # %<>% is the compound assignment pipe operator
-  mutate_all(~ (.[,"XML_value"])) %>%  
-  print()
+  print()  
 
 # FILTER & PRINT DATA ######################################
 
