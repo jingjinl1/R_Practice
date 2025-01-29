@@ -4,24 +4,12 @@
 #           Wrangling and Visualizing Data
 
 # INSTALL AND LOAD PACKAGES ################################
+# Load packages
+pacman::p_load(pacman, tidyverse, XML2R) # XML2R: for working with XML data
 
-# Load contributed packages with pacman
-pacman::p_load(pacman, tidyverse, XML2R)
-# pacman: for loading/unloading packages
-# tidyverse: for so many reasons
-# XML2R: for working with XML data
-
-# GET DATA & RESTRUCTURE ###################################
-
-# File: https://www.w3schools.com/xml/cd_catalog.xml
-# Right click to "View page source" and see raw XML
+# GET Web DATA & RESTRUCTURE ###################################
 
 # Import XML data from web (must be online)
-df <- "https://www.w3schools.com/xml/cd_catalog.xml" %>%
-  XML2Obs() %>%
-  collapse_obs() %>%
-  print()
-
 df <- "http://ergast.com/api/f1/1954/results/1.xml" %>%
   XML2Obs() %>%
   collapse_obs() %>%
