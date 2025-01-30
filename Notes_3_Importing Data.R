@@ -10,7 +10,7 @@ library(help = "datasets")  # Get list of datasets
 
 #List of datasets in package with p_data()
 p_data(datasets)
-#Tidyverse is a collection of packages, not datasets
+#Tidyverse is a collection of packages, not dataset
 p_data(tidyverse)  # Output: no data sets found
 
 
@@ -24,18 +24,10 @@ df <- "http://ergast.com/api/f1/1954/results/1.xml" %>%
   collapse_obs() %>%
   print()
 
-df <- tibble(                             
-  Race = df$`MRData//RaceTable//Race//RaceName`[, "XML_value"], # Get race name
-  FirstName = df$`MRData//RaceTable//Race//ResultsList//Result//Driver//GivenName`[, "XML_value"], # Get first name
-  LastName = df$`MRData//RaceTable//Race//ResultsList//Result//Driver//FamilyName`[, "XML_value"], # Get last name
-  Team = df$`MRData//RaceTable//Race//ResultsList//Result//Constructor//Name`[, "XML_value"]  # Get team name
-) %>% 
-  print() 
 # See variable (node) names and IDs
 df %>%
   names() %>%
   print()
-
 
 #extract the XML_value from each named element before converting the list to a tibble
 df <- tibble(                             
@@ -46,9 +38,7 @@ df <- tibble(
 ) %>% 
   print()  
 
-# FILTER & PRINT DATA ######################################
-
-# Select just the Grand Prix races.
+# Filter data, Select just the Grand Prix races.
 df %<>% 
   filter(str_detect(Race,"Prix")) %>%
   print()

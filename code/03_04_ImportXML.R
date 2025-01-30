@@ -23,12 +23,12 @@ df %>%
 # EXTRACT & COMBINE DATA ###################################
 #extract the XML_value from each named element before converting the list to a tibble
 df <- tibble(                             
-    Race = df$`MRData//RaceTable//Race//RaceName`[, "XML_value"], # Get race name
-    FirstName = df$`MRData//RaceTable//Race//ResultsList//Result//Driver//GivenName`, # Get first name
-    LastName = df$`MRData//RaceTable//Race//ResultsList//Result//Driver//FamilyName`[, "XML_value"], # Get last name
-    Team = df$`MRData//RaceTable//Race//ResultsList//Result//Constructor//Name`[, "XML_value"]  # Get team name
-  ) %>% 
-  print()  
+  Race = df$`MRData//RaceTable//Race//RaceName`[, "XML_value"], # Get race name
+  FirstName = df$`MRData//RaceTable//Race//ResultsList//Result//Driver//GivenName`[, "XML_value"], # Get first name
+  LastName = df$`MRData//RaceTable//Race//ResultsList//Result//Driver//FamilyName`[, "XML_value"], # Get last name
+  Team = df$`MRData//RaceTable//Race//ResultsList//Result//Constructor//Name`[, "XML_value"]  # Get team name
+) %>% 
+  print() 
 
 # FILTER & PRINT DATA ######################################
 
