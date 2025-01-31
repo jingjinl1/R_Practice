@@ -7,7 +7,7 @@
 rm(list = ls())
 
 # Clear packages
-detach("package:datasets", unload = TRUE)  # For base
+p_unload(all)  # Remove all add-ons
 
 # Clear plots
 graphics.off()  # Clears plots, closes all graphics devices

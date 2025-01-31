@@ -42,3 +42,38 @@ df <- tibble(
 df %<>% 
   filter(str_detect(Race,"Prix")) %>%
   print()
+
+#Json data#############################
+# Load contributed packages with pacman
+pacman::p_load(pacman, tidyverse, jsonlite)
+#GET data
+dat <- "https://api.jolpi.ca/ergast/f1/1954/results/1.json" %>%
+  fromJSON()  %>%  # Put data into list
+  print()          # See raw data
+
+# See nested JSON stucture
+dat %>% toJSON(pretty = T)
+
+# View the structure of the dat object to see that the races
+# are in a data.frame object.
+str(dat)
+
+# Race name is in: dat$MRData$RaceTable$Races
+# Create tibble
+df <- dat$MRData$RaceTable$Races %>% 
+  as_tibble %>%
+  print()
+
+# Unnest data and select variables; Use names_repair because
+# some of the nested dataframes have the same variable names
+df %<>% 
+  unnest_wider(Results) %>% 
+  unnest_wider(Driver, names_repair = "unique") %>% 
+  unnest_wider(Constructor, names_repair = "unique") %>% 
+  select(
+    Race      = raceName,    # Get race name
+    FirstName = givenName,   # Get first name
+    LastName  = familyName,  # Get last name
+    Team      = name         # Get team name
+  ) %>%
+  print()  # Show data
