@@ -58,14 +58,14 @@ dat %>% toJSON(pretty = T)
 # are in a data.frame object.
 str(dat)
 
-# Race name is in: dat$MRData$RaceTable$Races
-# Create tibble
-df <- dat$MRData$RaceTable$Races %>% 
-  as_tibble %>%
-  print()
+# Race name is in: dat$MRData$RaceTable$Races, to process it, you have to make it a data frame first
+df <- dat$MRData$RaceTable$Races 
+   #%>% as_tibble %>% print() #you can make it as tibble to see the table version of the Races
 
-# Unnest data and select variables; Use names_repair because
-# some of the nested dataframes have the same variable names
+#In the Races dataframe that was just created, we want race names; In results dataframe (nested), 
+#we want "givenName" and "familyName" from nested "Driver" dataframe; and "name" from nested "Constructor" dataframe
+#Unnest dataframe and select wanted variables; 
+#Use names_repair because some of the nested dataframes have the same variable names
 df %<>% 
   unnest_wider(Results) %>% 
   unnest_wider(Driver, names_repair = "unique") %>% 
